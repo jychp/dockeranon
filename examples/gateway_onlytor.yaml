@@ -1,0 +1,11 @@
+PROXIES:
+  tor:
+    type: tor
+ROUTES:
+  default:
+    proxy: tor
+    network: default
+DNS:
+  - name: dashboard.dockeranon
+    type: A
+    value: 192.168.5.254

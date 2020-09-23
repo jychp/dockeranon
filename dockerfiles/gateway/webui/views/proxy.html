@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>{{title}}</title>
+  <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="/static/img/icon.png" rel="icon" type="image/png" />
+</head>
+<body>
+<div id="wrapper">
+  <div id="header">
+    <strong>{{title}}</strong>
+  </div>
+  <div id="content">
+    %if msg:
+    <div id="statusmsg"><strong>{{msg}}</strong></div>
+    %end
+    <ul class="buttons clr">
+      <li class="action-button"><a href="/proxy">Proxy</a></li>
+      <li class="action-button"><a href="/routes">Routes</a></li>
+      <li class="action-button"><a href="/dns">DNS</a></li>
+    </ul>
+    <table cellspacing="0" id="statustable">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Proxy</th>
+        <th>Host</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody id="tbody">
+        %for p in proxy:
+        <tr>
+          <td>{{ p['name'] }}</td>
+          <td>{{ p['type'] }}</td>
+          <td>{{ p['proxy'] }}</td>
+          <td>{{ p['host'] }}</td>
+          <td class="action">
+            <ul>
+              <li><a href="/proxy/delete/{{ p['name'] }}" name="#">Delete</a></li>
+            </ul>
+          </td>
+        </tr>
+        %end
+      </tbody>
+    </table>
+    <ul class="buttons clr">
+      <li class="action-button"><a href="/proxy/restart">Restart all</a></li>
+      <li class="action-button"><a href="/proxy/add">Add proxy</a></li>
+    </ul>
+  </div>
+  <div class="push">
+  </div>
+</div>
+<div id="footer" class="clr">
+  <div class="left">
+    <a href="https://github.com/jychp/dockeranon">DockerAnon</a> <span>v1.0.0-beta</span>
+  </div>
+  <div class="right">
+    &copy; 2020 <strong><a href="https://github.com/jychp/dockeranon">DockerAnon</a></strong>
+  </div>
+</div>
+</body>
+</html>

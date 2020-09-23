@@ -1,0 +1,13 @@
+VirtualAddrNetworkIPv4 10.192.0.0/10
+DataDirectory /var/lib/tor
+SocksPort 127.0.0.1:9050 IsolateSOCKSAuth
+AutomapHostsOnResolve 1
+DNSPort 127.0.0.1:5353
+RunAsDaemon 1
+User tor
+
+ClientOnly 1
+NumEntryGuards 4
+NumDirectoryGuards 3
+GuardLifetime 2764800
+ExcludeExitNodes {us},{au},{ca},{nz},{gb},{fr}

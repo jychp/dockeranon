@@ -1,0 +1,4 @@
+docker
+prompt-toolkit
+pyyaml
+requests

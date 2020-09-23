@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>{{title}}</title>
+  <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="/static/img/icon.png" rel="icon" type="image/png" />
+</head>
+<body>
+<div id="wrapper">
+  <div id="header">
+    <strong>{{title}}</strong>
+  </div>
+  <div id="content">
+    %if msg:
+    <div id="statusmsg"><strong>{{msg}}</strong></div>
+    %end
+    <ul class="buttons clr">
+      <li class="action-button"><a href="/proxy">Proxy</a></li>
+      <li class="action-button"><a href="/routes">Routes</a></li>
+      <li class="action-button"><a href="/dns">DNS</a></li>
+    </ul>
+    <form method="POST">
+      <p>
+      <strong>Proxy name *:</strong><br/>
+      <input type="text" name="name"><br/>
+      <strong>Proxy type *:</strong><br/>
+      <select name="ptype">
+        <option selected>socks5</option>
+        <option selected>socks4</option>
+        <option selected>http</option>
+        <option selected>httponly</option>
+        <option selected>ss</option>
+        <option selected>ssr</option>
+        <option selected>ssh</option>
+        <option selected>tor</option>
+      </select><br/>
+      <strong>Proxy host *:</strong><br/>
+      <input type="text" name="host"><br/>
+      <strong>Proxy/SSH port *:</strong><br/>
+      <input type="text" name="port"><br/>
+      <strong>Proxy/SSH user:</strong><br/>
+      <input type="text" name="user"><br/>
+      <strong>Proxy/SSH password:</strong><br/>
+      <input type="text" name="password"><br/>
+      <strong>SSH key:</strong> <i>(cat private.key | base64 -w0)</i><br/>
+      <input type="text" name="sshkey"><br/>
+      <strong>Previous proxy:</strong><br/>
+      <select name="previous">
+        <option selected>None</option>
+        %for p in proxy:
+        <option>{{p}}</option>
+        %end
+      </select><br/>
+      <strong>SSH Server hostkeys:</strong> <i>(ssh-keyscan -H -p PORT HOST)</i><br>
+      <textarea rows="5" cols="300" name="hostkeys"></textarea><br/>
+      <input type="submit" value="Add proxy">
+      </p>
+      <p>
+        <i>* field are mandatory</i>
+      </p>
+    </form>
+  </div>
+  <div class="push">
+  </div>
+</div>
+<div id="footer" class="clr">
+  <div class="left">
+    <a href="https://github.com/jychp/dockeranon">DockerAnon</a> <span>v1.0.0-beta</span>
+  </div>
+  <div class="right">
+    &copy; 2020 <strong><a href="https://github.com/jychp/dockeranon">DockerAnon</a></strong>
+  </div>
+</div>
+</body>
+</html>
